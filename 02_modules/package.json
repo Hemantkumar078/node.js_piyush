@@ -1,0 +1,12 @@
+{
+  "name": "02_modules",
+  "version": "1.0.0",
+  "main": "math.js",
+  "type":"commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
