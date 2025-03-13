@@ -6,13 +6,15 @@ const myServer=http.createServer((req,res)=>{
     // console.log(req);
     console.log("request recieved");
     const log=`${Date.now()} : ${req.url} new req recieved\n`;
+    const myURL=url.parse(req.url,true);
+    console.log(myURL);
     fs.appendFile("log.txt",log,(err,data)=>{
         if(err) throw err;
         //console.log(data);
-        switch(req.url){// to get the request that user asking for like '/' home page and other pages
+        switch(myURL.pathname){// to get the request that user asking for like '/' home page and other pages
             case '/': res.end("Home page");
             break;
-            case '/about' : res.end("I am hemant"); 
+            case '/about' : res.end(`my name is ${myURL.query.myname}`); 
             break;
             default:
                 res.end("404 not found");
