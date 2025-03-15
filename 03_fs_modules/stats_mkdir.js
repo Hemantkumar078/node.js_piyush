@@ -1,7 +1,7 @@
 const fs=require("fs");
 console.log(fs.statSync("text.txt"));
 console.log(fs.statSync("text.txt").isFile());
-fs.mkdirSync('shubham/a/b',{recursive:true},(err)=>{
+fs.mkdir('shubham/a/b',{recursive:true},(err)=>{
     if(err) throw err;
 });
 fs.rmSync("shubham",{recursive :true ,force : true });// here recursive  true delete all contents inside directory and directory and 
