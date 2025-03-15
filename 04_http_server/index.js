@@ -6,7 +6,7 @@ const myServer=http.createServer((req,res)=>{
     // console.log(req);
     console.log("request recieved");
     const log=`${Date.now()} : ${req.url} new req recieved\n`;
-    const myURL=url.parse(req.url,true);
+    const myURL=url.parse(req.url,true);//here using true query parameters also seprate out in object
     console.log(myURL);
     fs.appendFile("log.txt",log,(err,data)=>{
         if(err) throw err;
