@@ -2,11 +2,12 @@ const http=require("http");
 const fs=require("fs");
 const url=require("url");
 const myServer=http.createServer((req,res)=>{
-    // console.log(req.headers);
+    if(req.url==='/favicon.ico')return res.end();
+     console.log(req.headers);
     // console.log(req);
     console.log("request recieved");
 
-    const log=`${Date.now()} : ${req.url} new req recieved\n`;
+    const log=`${Date.now()} : ${req.method} ${req.url}  new req recieved\n`;
     const myURL=url.parse(req.url,true);//here using true query parameters also seprate out in object
     console.log(myURL);
     fs.appendFile("log.txt",log,(err,data)=>{
@@ -18,7 +19,7 @@ const myServer=http.createServer((req,res)=>{
             case '/about' : res.end(`my name is ${myURL.query.myname}`); 
             break;
             default:
-                res.end("404 not found");
+                res.end(`${req.method} 404 not found`);
         }//this switch uses to multiple page request sending 
         //res.end("hey jnata kaise ho sab log hello 1");
         // responding to our request
